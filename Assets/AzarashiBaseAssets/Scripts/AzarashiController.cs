@@ -88,10 +88,6 @@ public class AzarashiController : MonoBehaviour
         // ヒット音を出す
         audioSource.PlayOneShot(hit);
 
-        // BGMをストップする
-        audioSource = this.GetComponent<AudioSource>();
-        audioSource.Stop();
-
         // クラッシュエフェクト
         Camera.main.SendMessage("Clash");
 
