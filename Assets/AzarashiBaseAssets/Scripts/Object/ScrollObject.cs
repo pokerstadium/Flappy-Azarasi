@@ -7,8 +7,8 @@ public class ScrollObject : MonoBehaviour
     public float speed = 1.0f;
     public float startPosition;
     public float endPosition;
-    GameController controller;
-    bool controll = false;
+    protected GameController controller;
+    protected bool controll = false;
 
     private void Start()
     {
@@ -41,13 +41,16 @@ public class ScrollObject : MonoBehaviour
     }
 
     // 一定のスコアでスピードアップ
-    void SpeedUp()
+    public virtual void SpeedUp()
     {
-        if (controller.score % 10 == 0 && !controll)
+        if(controller.score != 0)
         {
-            // １回だけスピードアップする
-            speed += 0.5f;
-            controll = true;
+            if (controller.score % 10 == 0 && !controll)
+            {
+                // １回だけスピードアップする
+                speed += 0.5f;
+                controll = true;
+            }
         }
     }
 
