@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     }
 
     State state;
-    int score;
+    public int score;
     public AzarashiController azarashi;
     public GameObject blocks;
     public Text scoreText;
@@ -42,8 +42,8 @@ public class GameController : MonoBehaviour
                 break;
 
             case State.GameOver:
-                // スペースを押したらシーンをリロード
-                if (Input.GetKey(KeyCode.KeypadEnter)) Reload();
+                // エンターを押したらシーンをリロード
+                if (Input.GetKey(KeyCode.Return)) Reload();
                 break;
         }
     }

@@ -7,11 +7,21 @@ public class Block : MonoBehaviour
     public float minHeight;
     public float maxHeight;
     public GameObject root;
+    protected GameController controller;
+    protected Vector2 position;
+    public int num = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         ChangeHeight();
+        controller = GameObject.Find("GameController").gameObject.GetComponent<GameController>();
+    }
+
+    // Update is called once per frame
+    public virtual void Update()
+    {
+
     }
 
     void ChangeHeight()
@@ -25,10 +35,5 @@ public class Block : MonoBehaviour
     void OnScrollEnd()
     {
         ChangeHeight();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

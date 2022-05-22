@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41354e073e47fc4093def34fd299853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   azarashi: {fileID: 593720959}
   blocks: {fileID: 1004559218}
   scoreText: {fileID: 1310652086}
@@ -670,6 +671,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d2ca9dde2f0b04abb155821cf3bed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &614492749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614492751}
+  - component: {fileID: 614492750}
+  m_Layer: 0
+  m_Name: NextBlockPositionTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &614492750
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614492749}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &614492751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614492749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.08, y: 0, z: 181.34369}
+  m_LocalScale: {x: 1, y: 14.9425, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &985345087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +1742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1004559219}
     m_Modifications:
+    - target: {fileID: 1104979766745509432, guid: f1450da985a71e146b041a491615a986, type: 3}
+      propertyPath: minHeight
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1375157690969137914, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1730,10 +1793,6 @@ PrefabInstance:
     - target: {fileID: 1375157690969137916, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: m_Name
       value: Block
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375157691711898242, guid: f1450da985a71e146b041a491615a986, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1450da985a71e146b041a491615a986, type: 3}

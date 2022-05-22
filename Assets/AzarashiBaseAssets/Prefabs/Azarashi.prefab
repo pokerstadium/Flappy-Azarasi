@@ -69,11 +69,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeight: 6.5
-  flapVelocity: 7
+  flapVelocity: 5
   relativeVelocityX: 3
   sprite: {fileID: 5834430614049643290}
   hit: {fileID: 8300000, guid: 4acc3d3c9ce7800439cc7bb08d5dfd91, type: 3}
-  fly: {fileID: 8300000, guid: f74909f48b4c3a94289364782ce20ace, type: 3}
 --- !u!82 &7112672050816497174
 AudioSource:
   m_ObjectHideFlags: 0
