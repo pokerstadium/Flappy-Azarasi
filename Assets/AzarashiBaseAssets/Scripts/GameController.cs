@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
 
             case State.GameOver:
                 // スペースを押したらシーンをリロード
-                if (Input.GetKey(KeyCode.Space)) Reload();
+                if (Input.GetKey(KeyCode.KeypadEnter)) Reload();
                 break;
         }
     }
@@ -57,10 +57,10 @@ public class GameController : MonoBehaviour
         blocks.SetActive(false);
 
         // ラベルを更新
-        scoreText.text = "Score : " + 0;
+        scoreText.text = "スコア : " + 0;
 
         stateText.gameObject.SetActive(true);
-        stateText.text = "Ready";
+        stateText.text = "スペースキーでスタート！";
     }
 
     void GameStart()
@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
 
         // ラベルを更新
         stateText.gameObject.SetActive(true);
-        stateText.text = "GameOver";
+        stateText.text = "ゲームオーバー…";
     }
 
     void Reload()
@@ -104,6 +104,6 @@ public class GameController : MonoBehaviour
     public void IncreaseScore()
     {
         score++;
-        scoreText.text = "Score : " + score;
+        scoreText.text = "スコア : " + score;
     }
 }
