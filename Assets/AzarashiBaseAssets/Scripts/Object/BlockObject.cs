@@ -4,16 +4,34 @@ using UnityEngine;
 
 public class BlockObject : ScrollObject
 {
-    public override void SpeedUp()
+    public int verticalSpeed = 1;
+    public override void Update()
     {
-        if (controller.score != 0)
+        // 毎フレームxポジションを少しずつ移動させる
+        transform.Translate(-1 * speed * Time.deltaTime, 0, 0);
+
+        // スクロールが目標ポイントまで到達したか確認
+        if (transform.position.x <= endPosition) ScrollEnd();
+
+        SpeedUp();
+        SpeedNow();
+        VerticalMotionBlock();
+    }
+
+    void VerticalMotionBlock()
+    {
+        if (controller.score >= 1)
         {
-            if (controller.score % 2 == 0 && !controll)
+            transform.Translate(transform.up * Time.deltaTime * verticalSpeed);
+
+            if(transform.position.y > 1.5f)
             {
-                // １回だけスピードアップする
-                speed += 0.5f;
-                controll = true;
-                //transform.localScale += new Vector3(0, -0.1f, 0);
+                verticalSpeed = -1;
+            }
+
+            if(transform.position.y < -4)
+            {
+                verticalSpeed = 1;
             }
         }
     }

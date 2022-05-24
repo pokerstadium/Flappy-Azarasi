@@ -15,7 +15,7 @@ public class ScrollObject : MonoBehaviour
         controller = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
-    void Update()
+    public virtual void Update()
     {
         // 毎フレームxポジションを少しずつ移動させる
         transform.Translate(-1 * speed * Time.deltaTime, 0, 0);
@@ -28,7 +28,7 @@ public class ScrollObject : MonoBehaviour
     }
 
 
-    void ScrollEnd()
+    public void ScrollEnd()
     {
         // 通り過ぎた分を加味してポジションを再設定
         float diff = transform.position.x - endPosition;
@@ -41,7 +41,7 @@ public class ScrollObject : MonoBehaviour
     }
 
     // 一定のスコアでスピードアップ
-    public virtual void SpeedUp()
+    public void SpeedUp()
     {
         if(controller.score != 0)
         {
@@ -55,7 +55,7 @@ public class ScrollObject : MonoBehaviour
     }
 
     // ある一定のスコアではない場合、falseに戻す
-    void SpeedNow()
+    public void SpeedNow()
     {
         if (controller.score % 10 != 0 && controll)
         {
