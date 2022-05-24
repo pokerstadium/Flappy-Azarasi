@@ -10,10 +10,10 @@ public class BlockObject : ScrollObject
         {
             if (controller.score % 2 == 0 && !controll)
             {
-                //// １回だけスピードアップする
-                //speed += 0.5f;
-                //controll = true;
-                ////transform.localScale += new Vector3(0, -0.1f, 0);
+                // １回だけスピードアップする
+                speed += 0.5f;
+                controll = true;
+                //transform.localScale += new Vector3(0, -0.1f, 0);
             }
         }
     }

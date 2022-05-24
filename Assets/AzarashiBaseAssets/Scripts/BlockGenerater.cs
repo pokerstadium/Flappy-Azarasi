@@ -7,13 +7,14 @@ public class BlockGenerater : MonoBehaviour
     public GameObject block;
     protected GameController controller;
     protected bool controll = false;
-    //public ScrollObjectCopy scrollObjectCopy;
+    public ScrollObjectCopy scrollObjectCopy;
+    float speed = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GameObject.Find("GameController").GetComponent<GameController>();
-        InvokeRepeating("Spawn", 1f, 1f);
+        InvokeRepeating("Spawn", 1f, speed);
     }
 
     void Update()
@@ -29,7 +30,7 @@ public class BlockGenerater : MonoBehaviour
             if (controller.score % 2 == 0 && !controll)
             {
                 // １回だけスピードアップする
-                //scrollObjectCopy.speed += 0.5f;
+                speed -= 1f;
                 controll = true;
             }
         }
