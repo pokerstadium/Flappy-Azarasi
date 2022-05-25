@@ -7,12 +7,14 @@ public class ScrollObject : MonoBehaviour
     public float speed = 1.0f;
     public float startPosition;
     public float endPosition;
-    protected GameController controller;
+    //protected GameController controller;
+    protected GameControllerCopy controller;
     protected bool controll = false;
 
     private void Start()
     {
-        controller = GameObject.Find("GameController").GetComponent<GameController>();
+        //controller = GameObject.Find("GameController").GetComponent<GameController>();
+        controller = GameObject.Find("GameController").GetComponent<GameControllerCopy>();
     }
 
     public virtual void Update()

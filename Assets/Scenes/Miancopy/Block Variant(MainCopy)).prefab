@@ -8,12 +8,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 374908305906902898, guid: f1450da985a71e146b041a491615a986, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 374908305906902898, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: maxHeight
       value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 374908305906902898, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: minHeight
       value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1104979766745509432, guid: f1450da985a71e146b041a491615a986, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1104979766745509432, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: maxHeight
@@ -79,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block Variant(MainCopy))
       objectReference: {fileID: 0}
+    - target: {fileID: 1375157690969137916, guid: f1450da985a71e146b041a491615a986, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1375157691711898242, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.62
@@ -89,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701319110756019285, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: maxHeight
-      value: 2
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 7701319110756019285, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: minHeight
-      value: -4.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7701319110756019285, guid: f1450da985a71e146b041a491615a986, type: 3}
       propertyPath: startPosition
