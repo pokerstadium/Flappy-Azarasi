@@ -195,6 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 170428529}
   - component: {fileID: 170428530}
+  - component: {fileID: 170428531}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -232,6 +233,23 @@ MonoBehaviour:
   score: 0
   azarashi: {fileID: 593720959}
   block: {fileID: 4387666921352271406, guid: c57424344bf90724caa7127f7300760c, type: 3}
+  scoreText: {fileID: 1310652086}
+  stateText: {fileID: 1168584281}
+--- !u!114 &170428531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170428527}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41354e073e47fc4093def34fd299853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  azarashi: {fileID: 593720959}
+  blocks: {fileID: 4387666921352271406, guid: c57424344bf90724caa7127f7300760c, type: 3}
   scoreText: {fileID: 1310652086}
   stateText: {fileID: 1168584281}
 --- !u!1 &396000525

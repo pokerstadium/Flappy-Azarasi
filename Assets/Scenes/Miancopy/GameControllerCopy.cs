@@ -71,6 +71,7 @@ public class GameControllerCopy : MonoBehaviour
         azarashi.SetSteerActive(true);
 
         Invoke("BlockGenerater", 1f);
+
         // 最初の入力だけゲームコントローラーから渡す
         azarashi.Flap();
 
@@ -84,7 +85,6 @@ public class GameControllerCopy : MonoBehaviour
     void BlockGenerater()
     {
         // １回だけブロックを作る
-
         while (point < 1)
         {
             Instantiate(block, transform.position, transform.rotation);
@@ -98,9 +98,11 @@ public class GameControllerCopy : MonoBehaviour
 
         // シーン中の全てのScrollObjectコンポーネントを探し出す
         ScrollObject[] scrollObjects = FindObjectsOfType<ScrollObject>();
+        ScrollObjectCopy scrollObjectCopy = FindObjectOfType<ScrollObjectCopy>();
 
         // 全ScrollObjectのスクロール処理を無効にする
         foreach (ScrollObject obj in scrollObjects) obj.enabled = false;
+        scrollObjectCopy.enabled = false;
 
         // ラベルを更新
         stateText.gameObject.SetActive(true);
