@@ -405,10 +405,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ef328a5c46b1341a1687c803f8daab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 4
+  speedValue: 0.1
+  maxSpeed: 7
   minHeight: 0
   maxHeight: 0
   startPosition: 0
+  blockSpeed: 3
+  blockBetween: 1
 --- !u!1 &1375157691711898245
 GameObject:
   m_ObjectHideFlags: 0
