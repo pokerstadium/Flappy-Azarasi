@@ -98,11 +98,11 @@ public class GameControllerCopy : MonoBehaviour
 
         // シーン中の全てのScrollObjectコンポーネントを探し出す
         ScrollObject[] scrollObjects = FindObjectsOfType<ScrollObject>();
-        ScrollObjectCopy scrollObjectCopy = FindObjectOfType<ScrollObjectCopy>();
+        //ScrollObjectCopy scrollObjectCopy = FindObjectOfType<ScrollObjectCopy>();
 
         // 全ScrollObjectのスクロール処理を無効にする
         foreach (ScrollObject obj in scrollObjects) obj.enabled = false;
-        scrollObjectCopy.enabled = false;
+        //scrollObjectCopy.enabled = false;
 
         // ラベルを更新
         stateText.gameObject.SetActive(true);
