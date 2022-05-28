@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public GameObject block;
     public Text scoreText;
     public Text stateText;
+    bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +44,12 @@ public class GameController : MonoBehaviour
                 break;
 
             case State.GameOver:
+                //ランキングを出す
+                if (!isGameOver) Ranking();
+
                 // エンターを押したらシーンをリロード
                 if (Input.GetKey(KeyCode.Return)) Reload();
+
                 break;
         }
     }
@@ -120,5 +125,11 @@ public class GameController : MonoBehaviour
     {
         score++;
         scoreText.text = "スコア : " + score;
+    }
+
+    void Ranking()
+    {
+        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
+        isGameOver = true;
     }
 }
