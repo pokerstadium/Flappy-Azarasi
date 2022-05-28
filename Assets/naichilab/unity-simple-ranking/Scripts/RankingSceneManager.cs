@@ -237,8 +237,8 @@ namespace naichilab
         public void OnCloseButtonClick()
         {
             // 追加
-            GameController controller = FindObjectOfType<GameController>();
-            controller.isGameOver = true;
+            //GameController controller = FindObjectOfType<GameController>();
+            //controller.isGameOver = true;
             // ここまで
 
             closeButton.interactable = false;
