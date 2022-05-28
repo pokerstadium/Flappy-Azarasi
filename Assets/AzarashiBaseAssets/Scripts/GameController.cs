@@ -14,9 +14,10 @@ public class GameController : MonoBehaviour
     }
 
     State state;
+    int point = 0;
     public int score;
     public AzarashiController azarashi;
-    public GameObject blocks;
+    public GameObject block;
     public Text scoreText;
     public Text stateText;
 
@@ -54,7 +55,6 @@ public class GameController : MonoBehaviour
 
         // 各オブジェクトを無効状態にする
         azarashi.SetSteerActive(false);
-        blocks.SetActive(false);
 
         // ラベルを更新
         scoreText.text = "スコア : " + 0;
@@ -69,14 +69,27 @@ public class GameController : MonoBehaviour
 
         // 各オブジェクトを有効にする
         azarashi.SetSteerActive(true);
-        blocks.SetActive(true);
+
+        Invoke("BlockGenerater", 1f);
 
         // 最初の入力だけゲームコントローラーから渡す
         azarashi.Flap();
 
+        BlockGenerater();
+
         // ラベルを更新
         stateText.gameObject.SetActive(false);
         stateText.text = "";
+    }
+
+    void BlockGenerater()
+    {
+        // １回だけブロックを作る
+        while (point < 1)
+        {
+            Instantiate(block, transform.position, transform.rotation);
+            point++;
+        }
     }
 
     void GameOver()
@@ -85,9 +98,11 @@ public class GameController : MonoBehaviour
 
         // シーン中の全てのScrollObjectコンポーネントを探し出す
         ScrollObject[] scrollObjects = FindObjectsOfType<ScrollObject>();
+        ScrollBlock scrollObjectCopy = FindObjectOfType<ScrollBlock>();
 
         // 全ScrollObjectのスクロール処理を無効にする
         foreach (ScrollObject obj in scrollObjects) obj.enabled = false;
+        scrollObjectCopy.enabled = false;
 
         // ラベルを更新
         stateText.gameObject.SetActive(true);

@@ -16,11 +16,11 @@ public class ScrollBlock : MonoBehaviour
     bool controll = false;
     bool verticalControll = false;
     float verticalSpeed = 0.5f;
-    GameControllerCopy gameController;
+    GameController gameController;
 
     private void Start()
     {
-        gameController = GameObject.Find("GameController").GetComponent<GameControllerCopy>();
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     void Update()
