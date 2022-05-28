@@ -20,12 +20,13 @@ public class GameController : MonoBehaviour
     public GameObject block;
     public Text scoreText;
     public Text stateText;
-    bool isGameOver = false;
+    public bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Ready();
+        isGameOver = true;
     }
 
     // Update is called once per frame
@@ -45,10 +46,10 @@ public class GameController : MonoBehaviour
 
             case State.GameOver:
                 //ランキングを出す
-                if (!isGameOver) Ranking();
+                if (isGameOver) Ranking();
 
                 // エンターを押したらシーンをリロード
-                if (Input.GetKey(KeyCode.Return)) Reload();
+                if (Input.GetKey(KeyCode.Return) && isGameOver) Reload();
 
                 break;
         }
@@ -103,15 +104,15 @@ public class GameController : MonoBehaviour
 
         // シーン中の全てのScrollObjectコンポーネントを探し出す
         ScrollObject[] scrollObjects = FindObjectsOfType<ScrollObject>();
-        ScrollBlock scrollObjectCopy = FindObjectOfType<ScrollBlock>();
+        ScrollBlock scrollBlock = FindObjectOfType<ScrollBlock>();
 
         // 全ScrollObjectのスクロール処理を無効にする
         foreach (ScrollObject obj in scrollObjects) obj.enabled = false;
-        scrollObjectCopy.enabled = false;
+        scrollBlock.enabled = false;
 
         // ラベルを更新
         stateText.gameObject.SetActive(true);
-        stateText.text = "ゲームオーバー…";
+        stateText.text = "Enterキーで再開！";
     }
 
     void Reload()
@@ -130,6 +131,6 @@ public class GameController : MonoBehaviour
     void Ranking()
     {
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
-        isGameOver = true;
+        isGameOver = false;
     }
 }

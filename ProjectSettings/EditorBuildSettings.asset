@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 93a0607b079a4294b8ef96a189f6b0ed
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: f6d06288519fd0745a6c0c786b060caf
+  - enabled: 1
+    path: Assets/naichilab/unity-simple-ranking/Scenes/Ranking.unity
+    guid: 152244f5855414ac4a3874f14efa583c
   m_configObjects: {}
