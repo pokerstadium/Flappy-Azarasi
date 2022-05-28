@@ -6,13 +6,16 @@ public class ScrollBlock : MonoBehaviour
 {
     public float speed = 4.0f;
     public float speedValue = 0.1f;
-    public float maxSpeed = 7.0f;
-    public float minHeight = -3.5f;
-    public float maxHeight = 3.3f;
-    public int startPosition = 5;
-    public int blockSpeed = 3;
-    public float blockBetween  = 1.0f;
-    protected bool controll = false;
+    float maxSpeed = 7.0f;
+    float minHeight = -3.5f;
+    float maxHeight = 3.3f;
+    int startPosition = 5;
+    public float blockSpeed = 1.0f;
+    float blockBetween  = 1.0f;
+    float minblockBetween  = 0.7f;
+    bool controll = false;
+    bool verticalControll = false;
+    float verticalSpeed = 0.5f;
     GameControllerCopy gameController;
 
     private void Start()
@@ -29,6 +32,7 @@ public class ScrollBlock : MonoBehaviour
         SpeedUp();
         BlockMotion();
         MaintainingSpeed();
+        MaintainingVerticalSpeed();
     }
 
     void InleftBorderBlock()
@@ -59,8 +63,15 @@ public class ScrollBlock : MonoBehaviour
         if (gameController.score % 10 == 0)
         {
             Debug.Log("ブロック間隔変更");
-            blockBetween -= 0.1f;
+            blockBetween -= 0.05f;
             transform.localScale = new Vector3(1.0f, blockBetween, 1.0f);
+
+            // これ以上ブロックの間隔を狭くしない
+            if (blockBetween <= minblockBetween)
+            {
+                // 0.05fを入れているのは上のblockBetween -=0.05fを相殺するために使用している
+                blockBetween = minblockBetween + 0.05f;
+            }
         }
     }
 
@@ -76,43 +87,13 @@ public class ScrollBlock : MonoBehaviour
                 Debug.Log("スピードアップ！");
                 speed += speedValue;
                 controll = true;
+
+                // これ以上スピードアップはしない
                 if(speed >= maxSpeed)
                 {
                     speed = maxSpeed;
                 }
             }
-        }
-    }
-
-    void BlockMotion()
-    {
-        if (gameController.score >= 1)
-        {
-            Invoke("Vertical", 0.5f);
-        }
-    }
-
-    // ブロックの縦移動
-    void Vertical()
-    {
-        // ブロックのリスタート時、最初だけ上下運動をランダムに出現
-        int random = Random.Range(0, 1);
-        if (random == 0 && transform.position.x < -5)
-        {
-            Debug.Log("test");
-            blockSpeed = -3;
-        }
-
-        transform.Translate(-speed * Time.deltaTime, blockSpeed * Time.deltaTime, 0);
-
-        if (transform.position.y > maxHeight)
-        {
-            blockSpeed = -3;
-        }
-
-        if (transform.position.y < minHeight)
-        {
-            blockSpeed = 3;
         }
     }
 
@@ -125,6 +106,54 @@ public class ScrollBlock : MonoBehaviour
         }
     }
 
+    void BlockMotion()
+    {
+        // スコアが３０以上になったら
+        if (gameController.score >= 10)
+        {
+            // 関数呼び出し
+            Invoke("Vertical", 0.5f);
+        }
+    }
 
+    // ブロックの上下運動
+    void Vertical()
+    {
+        // ブロックのリスタート時、最初だけ上下運動をランダムに出現
+        int random = Random.Range(0, 1);
+        if (random == 0 && transform.position.x < -5)
+        {
+            blockSpeed = -verticalSpeed;
+        }
 
+        transform.Translate(-speed * Time.deltaTime, blockSpeed * Time.deltaTime, 0);
+
+        // 下に移動
+        if (transform.position.y > maxHeight)
+        {
+            blockSpeed = -verticalSpeed;
+        }
+
+        // 上に移動
+        if (transform.position.y < minHeight)
+        {
+            blockSpeed = verticalSpeed;
+        }
+
+        if (gameController.score % 2 == 0 && !verticalControll)
+        {
+            Debug.Log("１回のみ");
+            verticalSpeed += 0.25f;
+            verticalControll = true;
+        }
+    }
+
+    void MaintainingVerticalSpeed()
+    {
+        if (gameController.score % 2 != 0 && verticalControll)
+        {
+            Debug.Log("false");
+            verticalControll = false;
+        }
+    }
 }
