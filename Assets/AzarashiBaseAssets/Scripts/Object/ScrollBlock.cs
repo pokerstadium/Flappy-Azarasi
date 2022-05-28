@@ -109,7 +109,7 @@ public class ScrollBlock : MonoBehaviour
     void BlockMotion()
     {
         // スコアが３０以上になったら
-        if (gameController.score >= 10)
+        if (gameController.score >= 30)
         {
             // 関数呼び出し
             Invoke("Vertical", 0.5f);
@@ -119,7 +119,13 @@ public class ScrollBlock : MonoBehaviour
     // ブロックの上下運動
     void Vertical()
     {
-        // ブロックのリスタート時、最初だけ上下運動をランダムに出現
+        VerticalMotion();
+        VerticalSpeed();
+    }
+
+    void VerticalMotion()
+    {
+        // ブロックのリスタート時、最初だけ上or下の動きをランダムで決める
         int random = Random.Range(0, 1);
         if (random == 0 && transform.position.x < -5)
         {
@@ -139,20 +145,31 @@ public class ScrollBlock : MonoBehaviour
         {
             blockSpeed = verticalSpeed;
         }
+    }
 
-        if (gameController.score % 2 == 0 && !verticalControll)
+    void VerticalSpeed()
+    {
+        // 一定のスコアで上下運動のスピードアップ
+        if (gameController.score % 10 == 0 && !verticalControll)
         {
             Debug.Log("１回のみ");
             verticalSpeed += 0.25f;
             verticalControll = true;
+
+            // これ以上上下運動のスピードを上げない
+            if (verticalSpeed >= 3)
+            {
+                // 2.75fなのは処理後、verticalSpeed += 0.25fで合計３になるため調整している。
+                verticalSpeed = 2.75f;
+            }
         }
     }
 
+
     void MaintainingVerticalSpeed()
     {
-        if (gameController.score % 2 != 0 && verticalControll)
+        if (gameController.score % 10 != 0 && verticalControll)
         {
-            Debug.Log("false");
             verticalControll = false;
         }
     }
