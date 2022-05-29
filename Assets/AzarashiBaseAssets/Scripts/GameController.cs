@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public GameObject block;
     public Text scoreText;
     public Text stateText;
+    public GameObject gameOverUI;
     public bool isGameOver = false;
 
     // Start is called before the first frame update
@@ -49,7 +50,7 @@ public class GameController : MonoBehaviour
                 if (isGameOver) Ranking();
 
                 // エンターを押したらシーンをリロード
-                if (Input.GetKey(KeyCode.Return) && isGameOver) Reload();
+                //if (Input.GetKey(KeyCode.Return) && isGameOver) Reload();
 
                 break;
         }
@@ -111,11 +112,18 @@ public class GameController : MonoBehaviour
         scrollBlock.enabled = false;
 
         // ラベルを更新
-        stateText.gameObject.SetActive(true);
-        stateText.text = "Enterキーで再開！";
+        //stateText.gameObject.SetActive(true);
+        //stateText.text = "Enterキーで再開！";
+        StartCoroutine(SetActiveUI());
     }
 
-    void Reload()
+    private IEnumerator SetActiveUI()
+    {
+        yield return new WaitForSeconds(0.3f);
+        gameOverUI.SetActive(true);
+    }
+
+    public void Reload()
     {
         // 現在読み込んでいるシーンを再読み込み
         string currentSceneName = SceneManager.GetActiveScene().name;
